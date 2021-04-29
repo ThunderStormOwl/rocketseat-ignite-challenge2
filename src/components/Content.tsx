@@ -1,6 +1,8 @@
 import { useState } from 'react';
-import { MovieCard } from '../components/MovieCard';
+import { MovieCard } from './MovieCard';
+import { Header } from './Header'
 import { api } from '../services/api';
+import '../styles/content.scss';
 
 export interface MovieProps {
   imdbID: string;
@@ -15,7 +17,7 @@ export interface MovieProps {
 
 interface ContentProps {
   selectedGenreId: Number,
-  selectedGenreTitle: String
+  selectedGenreTitle: string
 }
 
 export function Content(props : ContentProps) {
@@ -32,9 +34,7 @@ export function Content(props : ContentProps) {
 
   return(
     <div className="container">
-      <header>
-        <span className="category">Categoria:<span> {props.selectedGenreTitle}</span></span>
-      </header>
+      <Header title={props.selectedGenreTitle}/>
       <main>
         <div className="movies-list">
           {movies.map(movie => (
